@@ -1,0 +1,22 @@
+[
+  {
+    "id": 206467831807,
+    "code": "XMFCB18873",
+    "status": true,
+    "title": "Pan de maiz",
+    "description": "Pan hecho de maiz 100% natural",
+    "category": "Panaderia",
+    "price": 100,
+    "stock": 50
+  },
+  {
+    "id": 1472267331999,
+    "code": "TPWTI36926",
+    "status": true,
+    "title": "Pan de platano",
+    "description": "Pan hecho de platano 100% natural",
+    "category": "Panaderia",
+    "price": 150,
+    "stock": 10
+  }
+]
