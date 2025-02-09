@@ -27,7 +27,7 @@ class CartManager {
 
   async getCartById(id) {
     try {
-      const cart = this.carts.find((c) => c.id === Number(id));
+      const cart = this.carts.find((c) => c.id === id);
       if (!cart) {
         console.log("Carrito no encontrado");
         return null;
@@ -40,7 +40,7 @@ class CartManager {
 
   async addProductToCart(cartId, productId) {
     try {
-      const cart = this.carts.find((c) => c.id === Number(cartId));
+      const cart = this.carts.find((c) => c.id === cartId);
       if (!cart) {
         console.log("Carrito no encontrado");
         return null;

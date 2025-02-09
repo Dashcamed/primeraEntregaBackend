@@ -9,6 +9,9 @@ class ProductManager {
   async getProducts() {
     try {
       const data = await fs.promises.readFile(this.filePath, "utf-8");
+      if (data.length === 0) {
+        return [];
+      }
       return JSON.parse(data);
     } catch (error) {
       console.log("Error al leer los productos", error);
@@ -36,21 +39,20 @@ class ProductManager {
       let exist = products.find((p) => p.title === product.title);
       if (exist) {
         throw new Error("El producto ya existe");
+      } else {
+        const newProduct = {
+          id: Math.floor(Math.random() * Date.now()),
+          code: generateCode(),
+          status: true,
+          ...product,
+        };
+        products.push(newProduct);
+        await fs.promises.writeFile(
+          this.filePath,
+          JSON.stringify(products, null, 2)
+        );
+        return newProduct;
       }
-
-      const newProduct = {
-        id: Math.floor(Math.random() * Date.now()),
-        code: generateCode(),
-        status: true,
-        ...product,
-      };
-      products.push(newProduct);
-      await fs.promises.writeFile(
-        this.filePath,
-        JSON.stringify(products, null, 2)
-      );
-      console.log("Producto creado:", newProduct);
-      return newProduct;
     } catch (error) {
       console.log("Error al crear el producto", error);
       return null;
